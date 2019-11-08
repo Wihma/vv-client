@@ -13,7 +13,7 @@
           <v-row no-gutters class="settings-input-row">
             <v-col cols="4" class="pt-1 pl-1">Lösenord</v-col>
             <v-col cols="6" class="pt-1">
-              Ändrades senast: {{ new Date().toLocaleDateString("sv") }}
+              Ändrades senast: {{ new Date().toLocaleDateString('sv') }}
             </v-col>
             <v-col cols="2" style="text-align:right">
               <v-btn icon left>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style scoped>

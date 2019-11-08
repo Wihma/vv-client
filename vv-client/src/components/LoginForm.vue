@@ -5,8 +5,13 @@
     </v-card-title>
     <v-card-text>
       <v-form>
-        <v-text-field label="Email" prepend-icon="mdi-account-circle" />
         <v-text-field
+          v-model="credentials.email"
+          label="Email"
+          prepend-icon="mdi-account-circle"
+        />
+        <v-text-field
+          v-model="credentials.password"
           :type="showPassword ? 'text' : 'password'"
           label="Lösenord"
           prepend-icon="mdi-lock"
@@ -28,13 +33,19 @@
 export default {
   data() {
     return {
-      showPassword: false
-    };
+      showPassword: false,
+      on: false,
+      credentials: {
+        email: null,
+        password: null
+      }
+    }
   },
   methods: {
     login() {
-      this.$router.push({ name: "habits" });
+      // this.$router.push({ name: "habits" });
+      this.$store.dispatch('login', this.credentials)
     }
   }
-};
+}
 </script>

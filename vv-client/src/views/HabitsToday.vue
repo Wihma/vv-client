@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import HabitToday from "@/components/Habit/HabitToday.vue";
+import HabitToday from '@/components/Habit/HabitToday.vue'
 export default {
   components: {
     HabitToday
@@ -25,18 +25,18 @@ export default {
       todayHabits: [
         {
           id: 1,
-          name: "test 1",
-          time: "20:00"
+          name: 'test 1',
+          time: '20:00'
         },
         {
           id: 2,
-          name: "test 2",
-          time: "08:00"
+          name: 'test 2',
+          time: '08:00'
         }
       ]
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

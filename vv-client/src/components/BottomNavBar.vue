@@ -15,7 +15,7 @@
       <v-icon>mdi-plus</v-icon>
     </v-btn>
 
-    <v-btn :to="{ name: 'settings' }" v-on="on">
+    <v-btn :to="{ name: 'settings' }">
       <span>Inställningar</span>
       <v-icon>mdi-settings</v-icon>
     </v-btn>
@@ -26,13 +26,13 @@
 export default {
   data: () => ({
     items: [
-      { title: "Click Me" },
-      { title: "Click Me" },
-      { title: "Click Me" },
-      { title: "Click Me 2" }
+      { title: 'Click Me' },
+      { title: 'Click Me' },
+      { title: 'Click Me' },
+      { title: 'Click Me 2' }
     ]
   })
-};
+}
 </script>
 
 <style scoped></style>

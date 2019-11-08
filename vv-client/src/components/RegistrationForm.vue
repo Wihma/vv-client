@@ -28,9 +28,9 @@ export default {
   data() {
     return {
       showPassword: false
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

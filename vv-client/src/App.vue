@@ -1,32 +1,35 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <AppBar name="AppBar" />
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+    <BottomNavBar />
+  </v-app>
 </template>
 
+<script>
+import AppBar from '@/components/AppBar.vue'
+import BottomNavBar from '@/components/BottomNavBar.vue'
+export default {
+  name: 'App',
+
+  components: {
+    AppBar,
+    BottomNavBar
+  },
+
+  data: () => ({
+    //
+  })
+}
+</script>
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.text-tooltip {
+  color: red;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.-shadow {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.13);
 }
 </style>

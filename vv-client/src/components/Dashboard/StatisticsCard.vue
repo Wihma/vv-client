@@ -7,14 +7,14 @@
 
 <script>
 export default {
-  name: "StatisticCard",
+  name: 'StatisticCard',
   props: {
     statistic: {
       type: Object,
       required: true
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

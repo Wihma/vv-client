@@ -30,9 +30,9 @@ export default {
   data() {
     return {
       show: true
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped>

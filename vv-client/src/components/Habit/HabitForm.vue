@@ -70,10 +70,10 @@ export default {
       default: () => {
         return {
           id: 1,
-          name: "Push-Ups",
-          description: "Get down on the floor/ground and do one push-up",
-          time: "06:15"
-        };
+          name: 'Push-Ups',
+          description: 'Get down on the floor/ground and do one push-up',
+          time: '06:15'
+        }
       }
     }
   },
@@ -82,46 +82,46 @@ export default {
       time: null,
       menu2: false,
       labels: {
-        name: "Namn",
-        description: "Beskrivning",
-        time: "Ridpunkt",
-        weekdays: "Vanedagar",
-        active: "Aktiv",
-        measure: "Mät"
+        name: 'Namn',
+        description: 'Beskrivning',
+        time: 'Ridpunkt',
+        weekdays: 'Vanedagar',
+        active: 'Aktiv',
+        measure: 'Mät'
       },
       weekdays: [
         {
-          text: "Sunday",
+          text: 'Sunday',
           value: 0
         },
         {
-          text: "Monday",
+          text: 'Monday',
           value: 1
         },
         {
-          text: "Tuesday",
+          text: 'Tuesday',
           value: 2
         },
         {
-          text: "Wednesday",
+          text: 'Wednesday',
           value: 3
         },
         {
-          text: "Thursday",
+          text: 'Thursday',
           value: 4
         },
         {
-          text: "Friday",
+          text: 'Friday',
           value: 5
         },
         {
-          text: "Saturday",
+          text: 'Saturday',
           value: 6
         }
       ]
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

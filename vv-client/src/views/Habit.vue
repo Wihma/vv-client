@@ -22,7 +22,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12"> 
+      <v-col cols="12">
         <Graph />
       </v-col>
     </v-row>
@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import HabitForm from "@/components/Habit/HabitForm.vue";
-import StatisticsCard from "@/components/Dashboard/StatisticsCard.vue";
-import Graph from "@/components/Dashboard/Graph.vue";
+import HabitForm from '@/components/Habit/HabitForm.vue'
+import StatisticsCard from '@/components/Dashboard/StatisticsCard.vue'
+import Graph from '@/components/Dashboard/Graph.vue'
 
 export default {
   components: {
@@ -47,36 +47,36 @@ export default {
       default: () => {
         return {
           id: 1,
-          name: "Push-Ups",
-          description: "Get down on the floor/ground and do one push-up",
-          time: "06:15",
+          name: 'Push-Ups',
+          description: 'Get down on the floor/ground and do one push-up',
+          time: '06:15',
           statistics: [
             {
-              title: "Tot. antal dagar",
+              title: 'Tot. antal dagar',
               value: 365
             },
             {
-              title: "Dagar i rad (nu)",
+              title: 'Dagar i rad (nu)',
               value: 65
             },
             {
-              title: "Dagar i rad",
+              title: 'Dagar i rad',
               value: 150
             },
             {
-              title: "Längst tid",
-              value: "120 (s)"
+              title: 'Längst tid',
+              value: '120 (s)'
             },
             {
-              title: "Mest/Flest",
+              title: 'Mest/Flest',
               value: 36
             }
           ]
-        };
+        }
       }
     }
   }
-};
+}
 </script>
 
 <style scoped></style>

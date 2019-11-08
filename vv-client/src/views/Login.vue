@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import LoginForm from "@/components/LoginForm.vue";
-import RegistrationForm from "@/components/RegistrationForm.vue";
+import LoginForm from '@/components/LoginForm.vue'
+import RegistrationForm from '@/components/RegistrationForm.vue'
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: {
     LoginForm,
     RegistrationForm
@@ -31,9 +31,9 @@ export default {
     return {
       show: false,
       regForm: true
-    };
+    }
   }
-};
+}
 </script>
 
 <style></style>

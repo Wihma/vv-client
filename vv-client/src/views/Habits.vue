@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import HabitListItem from "@/components/Habit/HabitListItem.vue";
+import HabitListItem from '@/components/Habit/HabitListItem.vue'
 export default {
   components: {
     HabitListItem
@@ -27,32 +27,32 @@ export default {
       habits: [
         {
           id: 1,
-          name: "Push-Ups",
-          description: "Get down on the floor/ground and do one push-up",
-          time: "06:15"
+          name: 'Push-Ups',
+          description: 'Get down on the floor/ground and do one push-up',
+          time: '06:15'
         },
         {
           id: 2,
-          name: "Meditate",
-          description: "Sit down, close your eyes and take a deep breath",
-          time: "08:00"
+          name: 'Meditate',
+          description: 'Sit down, close your eyes and take a deep breath',
+          time: '08:00'
         },
         {
           id: 3,
-          name: "Meditate",
-          description: "Sit down, close your eyes and take a deep breath",
-          time: "08:00"
+          name: 'Meditate',
+          description: 'Sit down, close your eyes and take a deep breath',
+          time: '08:00'
         },
         {
           id: 4,
-          name: "Meditate",
-          description: "Sit down, close your eyes and take a deep breath",
-          time: "08:00"
+          name: 'Meditate',
+          description: 'Sit down, close your eyes and take a deep breath',
+          time: '08:00'
         }
       ]
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped>
