@@ -32,23 +32,35 @@ const routes = [
   {
     path: '/habits',
     name: 'habits',
-    component: Habits
+    component: Habits,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/habit/:id',
     name: 'habit',
     component: Habit,
-    props: true
+    props: true,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/habits-today',
     name: 'habits-today',
-    component: HabitsToday
+    component: HabitsToday,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/settings',
     name: 'settings',
-    component: Settings
+    component: Settings,
+    meta: {
+      requireAuth: true
+    }
   }
 ]
 
@@ -56,6 +68,17 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem('user')
+  if (to.matched.some(rec => rec.meta.requireAuth) && !loggedIn) {
+    next('/')
+  } else if (to.matched.some(rec => !rec.meta.requireAuth && loggedIn)) {
+    next('/habits')
+  } else {
+    next()
+  }
 })
 
 export default router
