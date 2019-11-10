@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" sm="5" class="text-center">
+      <v-spacer></v-spacer>
+      <v-col cols="12" sm="5" lg="4" xl="3" class="text-center">
         <RegistrationForm v-if="regForm" />
         <v-btn v-if="regForm" @click="regForm = false" text class="mt-2"
           >jag har redan ett konto</v-btn
@@ -11,7 +12,7 @@
           >jag vill registrera mig</v-btn
         >
       </v-col>
-      <v-col cols="12" sm="7">
+      <v-col cols="12" sm="7" lg="6" xl="5">
         <v-card class="mx-auto mt-5">
           <v-card-title><h1 class="display-1">Vänliga Vanor</h1></v-card-title>
           <v-card-text>
@@ -72,6 +73,7 @@
           </v-card-text>
         </v-card>
       </v-col>
+      <v-spacer></v-spacer>
     </v-row>
   </v-container>
 </template>

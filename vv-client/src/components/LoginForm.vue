@@ -9,6 +9,7 @@
           v-model="credentials.email"
           label="Email"
           prepend-icon="mdi-account-circle"
+          autofocus
         />
         <v-text-field
           v-model="credentials.password"
@@ -19,6 +20,9 @@
           @click:append="showPassword = !showPassword"
         />
       </v-form>
+      <v-alert v-if="loginError" text info type="error">
+        Det gick inte att logga in. Skrev du in rätt användaruppgifter?
+      </v-alert>
       <a href=""><p>Jag har glömt mitt lösenord</p></a>
     </v-card-text>
     <v-divider></v-divider>
@@ -34,7 +38,7 @@ export default {
   data() {
     return {
       showPassword: false,
-      on: false,
+      loginError: false,
       credentials: {
         email: null,
         password: null
@@ -43,8 +47,14 @@ export default {
   },
   methods: {
     login() {
-      // this.$router.push({ name: "habits" });
-      this.$store.dispatch('login', this.credentials)
+      this.$store
+        .dispatch('auth/login', this.credentials)
+        .then(() => {
+          this.$router.push({ name: 'habits' })
+        })
+        .catch(() => {
+          this.loginError = true
+        })
     }
   }
 }

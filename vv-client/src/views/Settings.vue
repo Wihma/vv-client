@@ -43,12 +43,18 @@
       </v-card-actions>
     </v-card>
 
-    <v-btn block color="red" dark>Logga ut</v-btn>
+    <v-btn block color="red" @click="logout" dark>Logga ut</v-btn>
   </v-container>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    logout() {
+      this.$store.dispatch('auth/logout')
+    }
+  }
+}
 </script>
 
 <style scoped>

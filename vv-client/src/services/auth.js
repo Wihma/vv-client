@@ -1,7 +1,8 @@
-import api from './api.js'
+import { api } from './api.js'
+const endpoint = 'user'
 
 export const authService = {
   login(credentials) {
-    api.post('', credentials)
+    return api.post(endpoint + '/login', credentials)
   }
 }
