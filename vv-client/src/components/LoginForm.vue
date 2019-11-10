@@ -38,7 +38,6 @@ export default {
   data() {
     return {
       showPassword: false,
-      on: false,
       loginError: false,
       credentials: {
         email: null,

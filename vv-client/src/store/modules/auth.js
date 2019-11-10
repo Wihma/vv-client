@@ -24,8 +24,7 @@ export const actions = {
         commit('SET_USER_DATA', res.data)
       })
       .catch(err => {
-        console.log({ err })
-        return Promise.reject('Unable to login')
+        return Promise.reject(err)
 
         // here I should call an Http status code helper that depending on the status code gives the appropriate notification to the user.
       })
