@@ -9,7 +9,11 @@
     <v-row>
       <v-spacer />
       <v-col cols="12" sm="10" md="9" lg="6" xl="4">
-        <HabitListItem v-for="habit in habits" :key="habit.id" :habit="habit" />
+        <HabitListItem
+          v-for="habit in habit.habits"
+          :key="habit._id"
+          :habit="habit"
+        />
       </v-col>
       <v-spacer />
     </v-row>
@@ -17,40 +21,22 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+// import store from '@/store/index.js'
+
 import HabitListItem from '@/components/Habit/HabitListItem.vue'
 export default {
   components: {
     HabitListItem
   },
-  data() {
-    return {
-      habits: [
-        {
-          id: 1,
-          name: 'Push-Ups',
-          description: 'Get down on the floor/ground and do one push-up',
-          time: '06:15'
-        },
-        {
-          id: 2,
-          name: 'Meditate',
-          description: 'Sit down, close your eyes and take a deep breath',
-          time: '08:00'
-        },
-        {
-          id: 3,
-          name: 'Meditate',
-          description: 'Sit down, close your eyes and take a deep breath',
-          time: '08:00'
-        },
-        {
-          id: 4,
-          name: 'Meditate',
-          description: 'Sit down, close your eyes and take a deep breath',
-          time: '08:00'
-        }
-      ]
-    }
+  computed: {
+    test() {
+      return 'test value'
+    },
+    ...mapState(['habit'])
+  },
+  created() {
+    this.$store.dispatch('habit/fetchHabits')
   }
 }
 </script>

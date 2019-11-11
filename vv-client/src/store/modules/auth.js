@@ -1,5 +1,5 @@
 import { authService } from '@/services/auth.js'
-import axios from 'axios'
+import { api } from '@/services/api.js'
 export const namespaced = true
 export const state = {
   user: null
@@ -8,7 +8,7 @@ export const mutations = {
   SET_USER_DATA(state, userData) {
     state.user = userData
     localStorage.setItem('user', JSON.stringify(userData))
-    axios.defaults.headers.common['Authorization'] = `Bearer ${userData.token}`
+    api.defaults.headers.common['Authorization'] = `Bearer ${userData.token}`
   },
   CLEAR_USER_DATA(state) {
     state.user = null
@@ -36,5 +36,8 @@ export const actions = {
 export const getters = {
   loggedIn(state) {
     return !!state.user
+  },
+  userId(state) {
+    return state.user.userId
   }
 }

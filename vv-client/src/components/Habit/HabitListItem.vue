@@ -1,7 +1,7 @@
 <template>
   <router-link
     class="habit-link"
-    :to="{ name: 'habit', params: { id: habit.id } }"
+    :to="{ name: 'habit', params: { id: habit._id } }"
   >
     <v-card class="mb-4 habit-card -shadow">
       <v-card-title>
