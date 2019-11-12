@@ -5,14 +5,22 @@
     >
     <v-card-text>
       <v-form @submit.prevent="register">
-        <v-text-field :label="labels.name" type="text"></v-text-field>
-        <v-text-field :label="labels.description" type="text"></v-text-field>
+        <v-text-field
+          :label="labels.name"
+          v-model="habit.name"
+          type="text"
+        ></v-text-field>
+        <v-text-field
+          :label="labels.description"
+          v-model="habit.description"
+          type="text"
+        ></v-text-field>
         <v-menu
           ref="menu"
-          v-model="menu2"
+          v-model="menu"
           :close-on-content-click="false"
           :nudge-right="40"
-          :return-value.sync="time"
+          :return-value.sync="habit.time"
           transition="scale-transition"
           offset-y
           max-width="290px"
@@ -20,7 +28,7 @@
         >
           <template v-slot:activator="{ on }">
             <v-text-field
-              v-model="time"
+              v-model="habit.time"
               :label="labels.time"
               prepend-icon="mdi-clock"
               readonly
@@ -28,11 +36,11 @@
             ></v-text-field>
           </template>
           <v-time-picker
-            v-if="menu2"
-            v-model="time"
+            v-if="menu"
+            v-model="habit.time"
             full-width
             format="24hr"
-            @click:minute="$refs.menu.save(time)"
+            @click:minute="$refs.menu.save(habit.time)"
           ></v-time-picker>
         </v-menu>
 
@@ -40,13 +48,15 @@
           :items="weekdays"
           name="weekday"
           :label="labels.weekdays"
-          item-text="text"
-          item-value="value"
+          v-model="habit.selectedWeekdays"
           multiple
           persistent-hint
         ></v-select>
-        <v-switch :label="labels.active"></v-switch>
-        <v-switch :label="labels.measure"></v-switch>
+        <v-switch :label="labels.active" v-model="habit.active"></v-switch>
+        <v-switch
+          :label="labels.measure"
+          v-model="habit.measureWUnit"
+        ></v-switch>
       </v-form>
     </v-card-text>
     <v-card-actions>
@@ -66,56 +76,56 @@ export default {
   props: {
     habit: {
       type: Object,
-      required: true,
-      default: () => {
-        return {
-          id: 1,
-          name: 'Push-Ups',
-          description: 'Get down on the floor/ground and do one push-up',
-          time: '06:15'
-        }
-      }
+      required: true
+      // put template for a new object here?
+      // default: () => {
+      //   return {
+      //     id: 1,
+      //     name: 'Push-Ups',
+      //     description: 'Get down on the floor/ground and do one push-up',
+      //     time: '06:15'
+      //   }
+      // }
     }
   },
   data() {
     return {
-      time: null,
-      menu2: false,
+      menu: false,
       labels: {
         name: 'Namn',
         description: 'Beskrivning',
-        time: 'Ridpunkt',
+        time: 'Tidpunkt',
         weekdays: 'Vanedagar',
         active: 'Aktiv',
         measure: 'Mät'
       },
       weekdays: [
         {
-          text: 'Sunday',
+          text: 'Söndag',
           value: 0
         },
         {
-          text: 'Monday',
+          text: 'Måndag',
           value: 1
         },
         {
-          text: 'Tuesday',
+          text: 'Tisdag',
           value: 2
         },
         {
-          text: 'Wednesday',
+          text: 'Onsdag',
           value: 3
         },
         {
-          text: 'Thursday',
+          text: 'Torsdag',
           value: 4
         },
         {
-          text: 'Friday',
+          text: 'Fredag',
           value: 5
         },
         {
-          text: 'Saturday',
+          text: 'Lördag',
           value: 6
         }
       ]

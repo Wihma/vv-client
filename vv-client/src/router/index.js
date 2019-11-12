@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '@/views/Login.vue'
 import Habits from '@/views/Habits.vue'
 import Habit from '@/views/Habit.vue'
+import store from '@/store/index.js'
 import HabitsToday from '@/views/HabitsToday.vue'
 import Settings from '@/views/Settings.vue'
 
@@ -44,6 +45,19 @@ const routes = [
     props: true,
     meta: {
       requireAuth: true
+    },
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch('habit/fetchHabit', routeTo.params.id)
+        .then(habit => {
+          // coherce selectedWeekdays into number for it to work with select dropdown
+          habit.selectedWeekdays = habit.selectedWeekdays.map(d => Number(d))
+          routeTo.params.habit = habit
+          next()
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   {

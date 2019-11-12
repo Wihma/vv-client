@@ -1,5 +1,5 @@
 import { habitsService } from '@/services/habits.js'
-// import { getters } from './auth'
+import { habitService } from '@/services/habit.js'
 
 export const namespaced = true
 
@@ -11,6 +11,9 @@ export const state = {
 export const mutations = {
   SET_HABITS(state, habits) {
     state.habits = habits
+  },
+  SET_HABIT(state, habit) {
+    state.habit = habit
   }
 }
 
@@ -19,7 +22,27 @@ export const actions = {
     return habitsService.getHabits(rootGetters['auth/userId']).then(res => {
       commit('SET_HABITS', res.data)
     })
+  },
+  fetchHabit({ commit, getters }, _id) {
+    let habit = getters.getHabitById(_id)
+    if (habit) {
+      commit('SET_HABIT', habit)
+      return habit
+    } else {
+      return habitService
+        .getHabit(_id)
+        .then(res => {
+          commit('SET_HABIT', res.data)
+          return res.data
+        })
+        .catch()
+    }
   }
 }
 
-export const getters = {}
+export const getters = {
+  getHabitById: state => _id => {
+    let habit = state.habits.find(h => h._id === _id)
+    return habit
+  }
+}

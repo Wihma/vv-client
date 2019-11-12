@@ -2,9 +2,9 @@
   <v-container>
     <v-row>
       <v-col cols="12" lg="4">
-        <HabitForm />
+        <HabitForm :habit="habit" />
       </v-col>
-      <v-col cols="12" lg="8">
+      <v-col cols="12" lg="8" v-if="habit.statistics > 0">
         <h1>Statistik</h1>
         <v-container>
           <v-row>
@@ -43,37 +43,7 @@ export default {
   props: {
     habit: {
       type: Object,
-      required: true,
-      default: () => {
-        return {
-          id: 1,
-          name: 'Push-Ups',
-          description: 'Get down on the floor/ground and do one push-up',
-          time: '06:15',
-          statistics: [
-            {
-              title: 'Tot. antal dagar',
-              value: 365
-            },
-            {
-              title: 'Dagar i rad (nu)',
-              value: 65
-            },
-            {
-              title: 'Dagar i rad',
-              value: 150
-            },
-            {
-              title: 'Längst tid',
-              value: '120 (s)'
-            },
-            {
-              title: 'Mest/Flest',
-              value: 36
-            }
-          ]
-        }
-      }
+      required: true
     }
   }
 }
