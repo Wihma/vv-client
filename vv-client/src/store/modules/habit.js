@@ -67,5 +67,11 @@ export const getters = {
   getHabitById: state => _id => {
     let habit = state.habits.find(h => h._id === _id)
     return habit
+  },
+  activeHabits: state => {
+    return state.habits.filter(h => h.active === true)
+  },
+  archivedHabits: state => {
+    return state.habits.filter(h => h.active === false)
   }
 }
