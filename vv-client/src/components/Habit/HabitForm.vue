@@ -143,6 +143,7 @@ export default {
         .catch(err => console.log(err))
     },
     deleteHab() {
+      if (!confirm('Är du säker på att du vill ta bort vanan?')) return
       this.$store
         .dispatch('habit/delete', this.habit._id)
         .then(() => {
