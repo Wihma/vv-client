@@ -60,8 +60,8 @@
       </v-form>
     </v-card-text>
     <v-card-actions>
-      <v-btn icon>
-        <v-icon color="red" x-large>mdi-delete</v-icon>
+      <v-btn v-if="routeName != 'new-habit'" icon>
+        <v-icon color="red" @click="deleteHab" x-large>mdi-delete</v-icon>
       </v-btn>
       <v-spacer />
       <v-btn v-if="routeName == 'new-habit'" icon>
@@ -137,6 +137,14 @@ export default {
     update() {
       this.$store
         .dispatch('habit/update', this.habit)
+        .then(() => {
+          this.$router.push({ name: 'habits' })
+        })
+        .catch(err => console.log(err))
+    },
+    deleteHab() {
+      this.$store
+        .dispatch('habit/delete', this.habit._id)
         .then(() => {
           this.$router.push({ name: 'habits' })
         })

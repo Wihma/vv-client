@@ -54,10 +54,10 @@ export const actions = {
       .then()
       .catch()
   },
-  delete({ commit }, habit) {
-    commit('SET_HABIT', habit)
+  delete({ commit }, _id) {
+    commit('SET_HABIT', {})
     return habitService
-      .delete(habit)
+      .delete(_id)
       .then()
       .catch()
   }

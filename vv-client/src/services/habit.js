@@ -19,10 +19,12 @@ export const habitService = {
       habit: habit
     })
   },
-  delete() {
-    // return api.put(endpoint, {
-    //   userId: store.getters['auth/userId'],
-    //   habit: _id
-    // })
+  delete(_id) {
+    return api.delete(endpoint, {
+      params: {
+        userId: store.getters['auth/userId'],
+        _id: _id
+      }
+    })
   }
 }
