@@ -64,8 +64,11 @@
         <v-icon color="red" x-large>mdi-delete</v-icon>
       </v-btn>
       <v-spacer />
-      <v-btn icon>
-        <v-icon color="green" x-large>mdi-cloud-upload</v-icon>
+      <v-btn v-if="routeName == 'new-habit'" icon>
+        <v-icon color="green" @click="create" x-large>mdi-cloud-upload</v-icon>
+      </v-btn>
+      <v-btn v-else icon>
+        <v-icon color="green" @click="update" x-large>mdi-cloud-upload</v-icon>
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -77,15 +80,6 @@ export default {
     habit: {
       type: Object,
       required: true
-      // put template for a new object here?
-      // default: () => {
-      //   return {
-      //     id: 1,
-      //     name: 'Push-Ups',
-      //     description: 'Get down on the floor/ground and do one push-up',
-      //     time: '06:15'
-      //   }
-      // }
     }
   },
   data() {
@@ -129,6 +123,29 @@ export default {
           value: 6
         }
       ]
+    }
+  },
+  methods: {
+    create() {
+      this.$store
+        .dispatch('habit/create', this.habit)
+        .then(() => {
+          this.$router.push({ name: 'habits' })
+        })
+        .catch(err => console.log(err))
+    },
+    update() {
+      this.$store
+        .dispatch('habit/update', this.habit)
+        .then(() => {
+          this.$router.push({ name: 'habits' })
+        })
+        .catch(err => console.log(err))
+    }
+  },
+  computed: {
+    routeName() {
+      return this.$route.name
     }
   }
 }

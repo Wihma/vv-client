@@ -10,7 +10,7 @@
       <v-icon>mdi-checkbox-marked-outline</v-icon>
     </v-btn>
 
-    <v-btn :to="{ name: 'habit', params: { id: -1 } }">
+    <v-btn :to="{ name: 'new-habit' }">
       <span>Ny Vana</span>
       <v-icon>mdi-plus</v-icon>
     </v-btn>

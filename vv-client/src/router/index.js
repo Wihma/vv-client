@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '@/views/Login.vue'
 import Habits from '@/views/Habits.vue'
 import Habit from '@/views/Habit.vue'
+import NewHabit from '@/views/NewHabit.vue'
 import store from '@/store/index.js'
 import HabitsToday from '@/views/HabitsToday.vue'
 import Settings from '@/views/Settings.vue'
@@ -59,6 +60,19 @@ const routes = [
           console.log(err)
         })
     }
+  },
+  {
+    path: '/new-habit/',
+    name: 'new-habit',
+    component: NewHabit,
+    meta: {
+      requireAuth: true
+    }
+    // beforeRouteLeave(to, from, next) {
+    //   console.log('beforeRouteLeave')
+    //   this.$destroy()
+    //   next()
+    // }
   },
   {
     path: '/habits-today',

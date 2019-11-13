@@ -37,6 +37,29 @@ export const actions = {
         })
         .catch()
     }
+  },
+  create({ commit }, habit) {
+    commit('SET_HABIT', habit)
+    return habitService
+      .create(habit)
+      .then(() => {})
+      .catch(err => {
+        console.log({ err })
+      })
+  },
+  update({ commit }, habit) {
+    commit('SET_HABIT', habit)
+    return habitService
+      .update(habit)
+      .then()
+      .catch()
+  },
+  delete({ commit }, habit) {
+    commit('SET_HABIT', habit)
+    return habitService
+      .delete(habit)
+      .then()
+      .catch()
   }
 }
 
