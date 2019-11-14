@@ -61,8 +61,12 @@ export default {
     ...mapState(['habit'])
   },
   created() {
-    this.$store.dispatch('habit/fetchHabits')
-    this.habits = this.activeHabits
+    this.$store
+      .dispatch('habit/fetchHabits')
+      .then(() => {
+        this.habits = this.activeHabits
+      })
+      .catch(() => {})
   }
 }
 </script>
