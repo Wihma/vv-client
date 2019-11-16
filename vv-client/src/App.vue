@@ -32,4 +32,8 @@ export default {
 .-shadow {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.13);
 }
+
+.container {
+  text-align: center;
+}
 </style>

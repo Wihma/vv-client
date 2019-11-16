@@ -53,10 +53,7 @@
           persistent-hint
         ></v-select>
         <v-switch :label="labels.active" v-model="habit.active"></v-switch>
-        <v-switch
-          :label="labels.measure"
-          v-model="habit.measureWUnit"
-        ></v-switch>
+        <v-switch :label="labels.measure" v-model="habit.measure"></v-switch>
       </v-form>
     </v-card-text>
     <v-card-actions>

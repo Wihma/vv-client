@@ -33,7 +33,10 @@ export default {
         measure: true,
         name: 'Ny vana',
         description: 'En kort beskrivning av vanan och ditt minimimål',
-        daysPerformed: [],
+        completed: {
+          lastDateCompleted: null,
+          habitCompleted: []
+        },
         statistics: []
       }
     }

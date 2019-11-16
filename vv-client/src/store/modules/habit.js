@@ -14,6 +14,17 @@ export const mutations = {
   },
   SET_HABIT(state, habit) {
     state.habit = habit
+  },
+  COMPLETE_HABIT(state, payload) {
+    state.habits.indexOf(
+      state.habits.find(h => {
+        if (h._id === payload._id) {
+          h.completed.habitCompleted.push(payload.habitCompleted)
+          h.completed.lastDateCompleted = payload.habitCompleted.stop
+        }
+        return
+      })
+    )
   }
 }
 
@@ -60,6 +71,11 @@ export const actions = {
       .delete(_id)
       .then()
       .catch()
+  },
+  //todays habit
+  completeHabit({ commit }, payload) {
+    // service to complete habit
+    commit('COMPLETE_HABIT', payload)
   }
 }
 
@@ -73,5 +89,42 @@ export const getters = {
   },
   archivedHabits: state => {
     return state.habits.filter(h => h.active === false)
+  },
+  habitsToday: state => {
+    let d = new Date()
+    let todayStamp = new Date().setHours(0, 0, 0, 0)
+    let weekday = d.getDay()
+
+    let todaysHabits = state.habits
+    // get active habits
+    todaysHabits = todaysHabits.filter(habit => habit.active === true)
+
+    // get habits scheduled for today
+    todaysHabits = todaysHabits.filter(habit =>
+      habit.selectedWeekdays.find(habWeekday => {
+        return parseInt(habWeekday) === weekday
+      })
+    )
+
+    // check if habit has been completed today
+    todaysHabits = todaysHabits.filter(habit => {
+      if (habit.completed.lastDateCompleted) {
+        if (
+          new Date(habit.completed.lastDateCompleted).setHours(0, 0, 0, 0) >=
+          todayStamp
+        ) {
+          return false
+        } else {
+          return true
+        }
+      } else {
+        return true
+      }
+    })
+    todaysHabits.sort(function(a, b) {
+      return a.time > b.time
+    })
+
+    return todaysHabits
   }
 }

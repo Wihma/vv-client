@@ -14,6 +14,7 @@ Vue.config.productionTip = false
   if (userString) {
     const userData = JSON.parse(userString)
     store.commit('auth/SET_USER_DATA', userData)
+    store.dispatch('habit/fetchHabits')
   }
   axios.interceptors.response.use(
     response => response,

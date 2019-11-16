@@ -30,7 +30,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { mapState } from 'vuex'
 // import store from '@/store/index.js'
 
 import HabitListItem from '@/components/Habit/HabitListItem.vue'
@@ -48,6 +47,7 @@ export default {
       } else {
         this.habits = this.archivedHabits
       }
+      this.showActive = showActive
     }
   },
   components: {
@@ -57,8 +57,7 @@ export default {
     ...mapGetters({
       activeHabits: 'habit/activeHabits',
       archivedHabits: 'habit/archivedHabits'
-    }),
-    ...mapState(['habit'])
+    })
   },
   created() {
     this.$store
