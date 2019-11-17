@@ -4,7 +4,7 @@
       <v-col cols="12" lg="4">
         <HabitForm :habit="habit" />
       </v-col>
-      <v-col cols="12" lg="8" v-if="habit.statistics > 0">
+      <v-col cols="12" lg="8" v-if="habit.statistics.length > 0">
         <h1>Statistik</h1>
         <v-container>
           <v-row>
@@ -13,7 +13,7 @@
               sm="4"
               md="6"
               v-for="statistic in habit.statistics"
-              :key="statistic.title"
+              :key="statistic._id"
             >
               <StatisticsCard :statistic="statistic" />
             </v-col>
