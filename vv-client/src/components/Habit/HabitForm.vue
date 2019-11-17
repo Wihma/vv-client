@@ -88,7 +88,7 @@ export default {
         time: 'Tidpunkt',
         weekdays: 'Vanedagar',
         active: 'Aktiv',
-        measure: 'Mät'
+        measure: 'Mät antal'
       },
       weekdays: [
         {

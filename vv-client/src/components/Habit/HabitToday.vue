@@ -67,7 +67,14 @@ export default {
         stop: 0,
         finish: 0
       },
-      habitCompleted: {},
+      completedHabit: {
+        amount: null,
+        comment: null,
+        time: {
+          start: null,
+          stop: null
+        }
+      },
       amount: 0,
       labels: {
         amount: 'Antal'
@@ -80,20 +87,18 @@ export default {
       this.timestampStatus['start'] = 0
       this.timestampStatus['stop'] = 1
 
-      this.habitCompleted.start = Date.now()
+      this.completedHabit.time.start = Date.now()
     },
     stop() {
       console.log(this.stop.name)
       this.timestampStatus['stop'] = 0
-      this.habitCompleted.stop = Date.now()
+      this.completedHabit.time.stop = Date.now()
 
-      console.log({ measure: this.habit.measure })
       if (!this.habit.measure) {
-        console.log({ masure: this.habit.measure })
         this.complete()
+      } else {
+        this.timestampStatus['finish'] = 1
       }
-
-      this.timestampStatus['finish'] = 1
     },
     finish() {
       console.log(this.finish.name)
@@ -103,13 +108,13 @@ export default {
         }
       }
       this.timestampStatus['finish'] = 0
-      this.habitCompleted.amount = this.amount
+      this.completedHabit.amount = this.amount
       this.complete()
     },
     complete() {
       this.$store.dispatch('habit/completeHabit', {
         _id: this.habit._id,
-        habitCompleted: this.habitCompleted
+        completedHabit: this.completedHabit
       })
     }
   }

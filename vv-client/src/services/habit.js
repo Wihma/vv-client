@@ -26,5 +26,12 @@ export const habitService = {
         _id: _id
       }
     })
+  },
+  completed(_id, completed) {
+    return api.post(endpoint + '/completed', {
+      userId: store.getters['auth/userId'],
+      _id,
+      completed
+    })
   }
 }

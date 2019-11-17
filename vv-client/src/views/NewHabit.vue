@@ -30,7 +30,7 @@ export default {
         active: true,
         selectedWeekdays: [0, 1, 2, 3, 4, 5, 6],
         time: '08:00',
-        measure: true,
+        measure: false,
         name: 'Ny vana',
         description: 'En kort beskrivning av vanan och ditt minimimål',
         completed: {

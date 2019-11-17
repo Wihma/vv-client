@@ -19,8 +19,8 @@ export const mutations = {
     state.habits.indexOf(
       state.habits.find(h => {
         if (h._id === payload._id) {
-          h.completed.habitCompleted.push(payload.habitCompleted)
-          h.completed.lastDateCompleted = payload.habitCompleted.stop
+          h.completed.completedHabit.push(payload.completedHabit)
+          h.completed.lastDateCompleted = payload.completedHabit.time.stop
         }
         return
       })
@@ -75,7 +75,14 @@ export const actions = {
   //todays habit
   completeHabit({ commit }, payload) {
     // service to complete habit
-    commit('COMPLETE_HABIT', payload)
+    habitService
+      .completed(payload._id, payload.completedHabit)
+      .then(() => {
+        commit('COMPLETE_HABIT', payload)
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
 }
 
