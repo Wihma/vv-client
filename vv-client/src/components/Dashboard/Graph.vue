@@ -22,9 +22,29 @@ export default {
   data() {
     return {
       title: 'Genomsnitt senaste 4 veckorna',
-      time: [325, 123, 273, 573],
+      time: [325, 123, 273, 573, 325, 123, 273, 573],
       color: 'teal',
-      labels: ['v.40', 'v.41', 'v.42', 'v.43']
+      labels: [],
+      dayNames: [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+      ]
+    }
+  },
+  created() {
+    Date.prototype.getCurrentWeek = function() {
+      let onejan = new Date(this.getFullYear(), 0, 1)
+      return Math.ceil(((this - onejan) / 86400000 + onejan.getDay() - 1) / 7)
+    }
+
+    // set week span
+    for (let i = 0; i < 8; i++) {
+      this.labels.unshift(`v. ${new Date().getCurrentWeek() - i}`)
     }
   }
 }
