@@ -56,7 +56,8 @@ export default {
   computed: {
     ...mapGetters({
       activeHabits: 'habit/activeHabits',
-      archivedHabits: 'habit/archivedHabits'
+      archivedHabits: 'habit/archivedHabits',
+      habitCompletedTimes: 'habit/habitCompletedTimes'
     })
   },
   created() {

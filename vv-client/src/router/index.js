@@ -68,11 +68,6 @@ const routes = [
     meta: {
       requireAuth: true
     }
-    // beforeRouteLeave(to, from, next) {
-    //   console.log('beforeRouteLeave')
-    //   this.$destroy()
-    //   next()
-    // }
   },
   {
     path: '/habits-today',

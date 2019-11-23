@@ -1,7 +1,8 @@
 <template>
   <v-card>
     <v-card-title class="display-1"
-      >{{ statistic.title }}: {{ statistic.value }}</v-card-title
+      >{{ statistic.title }}:
+      {{ Math.round(statistic.value * 100) / 100 }}</v-card-title
     >
     <!-- <v-card-text class="display-1"></v-card-text> -->
   </v-card>

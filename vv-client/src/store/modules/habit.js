@@ -133,5 +133,54 @@ export const getters = {
     })
 
     return todaysHabits
+  },
+  habitCompletedTimes: state => {
+    let habitsPast28days = []
+    let completedHabits = state.habit.completed.completedHabit.map(a => ({
+      ...a
+    }))
+    let today = new Date()
+    for (let i = 0; i < 28; i++) {
+      if (completedHabits.length < 1) {
+        habitsPast28days.unshift(0)
+      } else {
+        let date = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate() - i
+        )
+
+        let completedDate = new Date(
+          completedHabits[completedHabits.length - 1].time.start
+        )
+        let start = new Date(
+          completedHabits[completedHabits.length - 1].time.start
+        )
+        let stop = new Date(
+          completedHabits[completedHabits.length - 1].time.stop
+        )
+        let completedTime = Math.abs((start.getTime() - stop.getTime()) / 1000)
+        let completedDateCompare = new Date(
+          completedDate.getFullYear(),
+          completedDate.getMonth(),
+          completedDate.getDate()
+        )
+        if (date.getTime() === completedDateCompare.getTime()) {
+          habitsPast28days.unshift(completedTime)
+          completedHabits.pop()
+        } else {
+          habitsPast28days.unshift(0)
+        }
+      }
+    }
+
+    let fourWeeks = [
+      habitsPast28days.splice(0, 7).reduce((acc, curr) => acc + curr),
+      habitsPast28days.splice(0, 7).reduce((acc, curr) => acc + curr),
+      habitsPast28days.splice(0, 7).reduce((acc, curr) => acc + curr),
+      habitsPast28days.splice(0, 7).reduce((acc, curr) => acc + curr)
+    ]
+
+    return fourWeeks
   }
 }
