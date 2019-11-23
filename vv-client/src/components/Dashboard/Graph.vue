@@ -1,5 +1,5 @@
 <template>
-  <v-card :color="color" dark v-if="completed.length > 0">
+  <v-card :color="color" dark v-if="habitCompletedTimes.length > 0">
     <v-card-title class="text-center">
       <div class="display-1">{{ title }}</div>
     </v-card-title>
@@ -42,12 +42,13 @@ export default {
     })
   },
   created() {
-    for (let i = 0; i < 4; i++) {
-      this.labels.unshift(`v. ${new Date().getCurrentWeek() - i}`)
-    }
     Date.prototype.getCurrentWeek = function() {
       let onejan = new Date(this.getFullYear(), 0, 1)
       return Math.ceil(((this - onejan) / 86400000 + onejan.getDay() - 1) / 7)
+    }
+
+    for (let i = 0; i < 4; i++) {
+      this.labels.unshift(`v. ${new Date().getCurrentWeek() - i}`)
     }
   }
 }
